@@ -1,10 +1,12 @@
 {
-    "require": {
-        "symfony/flex": "^2.4"
-    },
-    "config": {
-        "allow-plugins": {
-            "symfony/flex": true
+    "name": "ploshka/event-tickets",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
         }
+    },
+    "require": {},
+    "config": {
     }
 }
