@@ -1,0 +1,25 @@
+version: '3'
+name: event-tickets
+
+services:
+  # MySQL container
+  database:
+    image: mysql:8.3.0
+    container_name: database
+    env_file:
+      - path: ./db.env
+        required: true
+      - path: ./db.prod.env
+        required: false
+    ports:
+      - 3306:3306
+    volumes:
+      - database_data:/var/lib/mysql:rw
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+volumes:
+  database_data:
+

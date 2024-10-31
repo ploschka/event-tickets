@@ -6,7 +6,13 @@
             "App\\": "src/"
         }
     },
-    "require": {},
+    "require": {
+        "doctrine/orm": "^3.3",
+        "doctrine/migrations": "^3.8",
+        "symfony/dotenv": "^7.1",
+        "symfony/http-client": "^7.1",
+        "symfony/cache": "^7.1"
+    },
     "config": {
     }
 }
