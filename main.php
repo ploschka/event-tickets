@@ -1,6 +1,8 @@
 <?php
 
-require_once("vendor/autoload.php");
+use App\App;
 
-echo "Hello, World!";
+require_once __DIR__ . "/vendor/autoload.php";
+
+$app = new App(__DIR__);
 
