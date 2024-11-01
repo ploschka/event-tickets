@@ -21,7 +21,7 @@ class App
 
         $dsnParser = new DsnParser(['mysql' => 'pdo_mysql', 'postgres' => 'pdo_pgsql']);
         $config = ORMSetup::createAttributeMetadataConfiguration(
-            paths: [$dir . '/src/Entities'],
+            paths: [$dir . '/src/Entity'],
             isDevMode: true,
         );
         $connectionParams = $dsnParser->parse($_ENV['DATABASE_URL']);
