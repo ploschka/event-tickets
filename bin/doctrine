@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+use App\App;
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
+use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
+
+require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+$app = new App(dirname(__DIR__));
+
+ConsoleRunner::run(
+    new SingleManagerProvider($app->em)
+);
+

@@ -2,4 +2,8 @@ var
 vendor
 *.html
 public/bundles
+.env.local
+.env.local.php
+.env.*.local
+db.prod.env
 

@@ -17,7 +17,7 @@ class App
     public function __construct(string $dir)
     {
         $this->dotenv = new Dotenv();
-        $this->dotenv->loadEnv("$dir/.env");
+        $this->dotenv->loadEnv("$dir/.env", null, 'prod');
 
         $dsnParser = new DsnParser(['mysql' => 'pdo_mysql', 'postgres' => 'pdo_pgsql']);
         $config = ORMSetup::createAttributeMetadataConfiguration(
