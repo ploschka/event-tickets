@@ -6,4 +6,5 @@ public/bundles
 .env.local.php
 .env.*.local
 db.prod.env
+temp
 
