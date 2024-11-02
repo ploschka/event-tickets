@@ -2,6 +2,7 @@
 <?php
 
 use App\App;
+use Doctrine\Migrations\Tools\Console\Command;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
 
@@ -9,7 +10,24 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 $app = new App(dirname(__DIR__));
 
+$commands = [
+    new Command\CurrentCommand($app->depFactory),
+    new Command\DiffCommand($app->depFactory),
+    new Command\DumpSchemaCommand($app->depFactory),
+    new Command\ExecuteCommand($app->depFactory),
+    new Command\GenerateCommand($app->depFactory),
+    new Command\LatestCommand($app->depFactory),
+    new Command\ListCommand($app->depFactory),
+    new Command\MigrateCommand($app->depFactory),
+    new Command\RollupCommand($app->depFactory),
+    new Command\StatusCommand($app->depFactory),
+    new Command\SyncMetadataCommand($app->depFactory),
+    new Command\UpToDateCommand($app->depFactory),
+    new Command\VersionCommand($app->depFactory),
+];
+
 ConsoleRunner::run(
-    new SingleManagerProvider($app->em)
+    new SingleManagerProvider($app->em),
+    $commands,
 );
 
