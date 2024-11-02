@@ -38,34 +38,9 @@ class ApiHandler
 
         if ($path === '/approve')
         {
-            if ($rng)
-            {
-                return [
-                    'message' => 'order successfully aproved'
-                ];
-            }
-            else
-            {
-                $str = '';
-                switch ($rng2)
-                {
-                case 0:
-                    $str = 'event cancelled';
-                    break;
-                case 1:
-                    $str = 'no tickets';
-                    break;
-                case 2:
-                    $str = 'no seats';
-                    break;
-                case 3:
-                    $str = 'fan removed';
-                    break;
-                }
-                return [
-                    'error' => $str
-                ];
-            }
+            return [
+                'message' => 'order successfully aproved'
+            ];
         }
         return null;
 
