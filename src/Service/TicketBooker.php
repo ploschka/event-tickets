@@ -3,15 +3,17 @@
 namespace App\Service;
 
 use App\Entity\Ticket;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class TicketBooker
 {
     private ApiHandler $api;
+    private bool $debug;
 
     public function __construct(ApiHandler $api)
     {
         $this->api = $api;
+
+        $this->debug = $_ENV['APP_DEBUG'] !== '0';
     }
 
     private function genBarcode(): string
@@ -46,6 +48,7 @@ class TicketBooker
 
         $barcode = null;
         $booked = false;
+        $count = 0;
         while(!$booked)
         {
             $barcode = $this->genBarcode();
@@ -75,6 +78,16 @@ class TicketBooker
                     }
                 }
             }
+            else
+            {
+                return null;
+            }
+            ++$count;
+        }
+
+        if ($this->debug)
+        {
+            echo "Booked in $count tries\n";
         }
 
         $a = [
@@ -90,9 +103,19 @@ class TicketBooker
         {
             if (array_key_exists('error', $resp))
             {
+                if ($this->debug)
+                {
+                    $err = $resp['error'];
+                    echo "Error occured while approving: $err\n";
+                }
                 return null;
             }
         }
+        else
+        {
+            return null;
+        }
+
         $ticket->barcode = $barcode;
 
         return $ticket;

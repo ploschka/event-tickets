@@ -21,6 +21,7 @@ class App
     public function __construct(string $dir)
     {
         $this->dotenv = new Dotenv();
+        $this->dotenv->populate(['APP_DEBUG' => 1]);
         $this->dotenv->loadEnv("$dir/.env", null, 'prod');
 
         $mconf = require($dir . '/config/migrations.php');
