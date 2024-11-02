@@ -9,7 +9,7 @@ class TicketBooker
 {
     private ApiHandler $api;
 
-    public function __construct(HttpClientInterface $api)
+    public function __construct(ApiHandler $api)
     {
         $this->api = $api;
     }
