@@ -3,21 +3,20 @@
 namespace App\Service;
 
 use App\Entity\Ticket;
-use DateTime;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class TicketBooker
 {
-    private HttpClientInterface $client;
+    private ApiHandler $api;
 
-    public function __construct(HttpClientInterface $client)
+    public function __construct(HttpClientInterface $api)
     {
-        $this->client = $client;
+        $this->api = $api;
     }
 
     public function book (
         int $event_id,
-        DateTime $event_date,
+        string $event_date,
         int $ticket_adult_price,
         int $ticket_adult_quantity,
         int $ticket_kid_price,
