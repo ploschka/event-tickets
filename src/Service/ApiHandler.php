@@ -17,8 +17,8 @@ class ApiHandler
 
     public function request(string $method, string $path, array $options = []): ?array
     {
-        $rng = random_int(0, PHP_INT_MAX) % 2 === 0;
-        $rng2 = random_int(0, 3);
+        $rng = rand(0, PHP_INT_MAX) % 2 === 0;
+        $rng2 = rand(0, 3);
 
         if ($path === '/book')
         {
