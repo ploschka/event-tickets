@@ -34,6 +34,9 @@ class Ticket
     #[ORM\Column(type: "string", length: 120, unique: true)]
     public ?string $barcode = null;
 
+    #[ORM\Column(nullable: true)]
+    public ?int $user_id = null;
+
     #[ORM\Column]
     public ?int $equal_price = null;
 
