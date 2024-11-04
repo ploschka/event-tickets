@@ -40,6 +40,12 @@
     docker compose up -d
     ```
 
+6. Применить миграции к базе данных
+
+    ```sh
+    ./bin/doctrine migrations:migrate
+    ```
+
 ### Использование
 
   ```sh
